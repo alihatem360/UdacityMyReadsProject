@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Bookshelf from "./Bookshelf/Bookshelf";
-const bookList = () => {
+const bookList = ({ bookList , ChangeBookShelf}) => {
+  const shelves = ["currentlyReading", "wantToRead", "read"];
+
   return (
     <Fragment>
       <div className="list-books">
@@ -11,7 +13,13 @@ const bookList = () => {
 
         <div className="list-books-content">
           <div>
-            <Bookshelf />
+            <Bookshelf bookList={bookList} shelfName={shelves[0]} ChangeBookShelf={ChangeBookShelf}/>
+            <Bookshelf bookList={bookList} shelfName={shelves[1]} ChangeBookShelf={ChangeBookShelf}/>
+            <Bookshelf bookList={bookList} shelfName={shelves[2]} ChangeBookShelf={ChangeBookShelf}/>
+          
+            {
+              // <Bookshelf ShelfName="Current reading" bookList={bookList} />
+            }{" "}
           </div>
         </div>
         <div className="open-search">
