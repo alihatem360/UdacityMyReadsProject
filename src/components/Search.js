@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import BookItem from "./BookItem/BookItem";
-const Search = ({ handelSearchBooks, searchBooks , ChangeBookShelf }) => {
+const Search = ({ handelSearchBooks, searchBooks, ChangeBookShelf }) => {
+  // console.log("book from Sreach: ", searchBooks);
+
   const handledlChanged = (e) => {
     handelSearchBooks(e.target.value);
   };
@@ -25,10 +27,25 @@ const Search = ({ handelSearchBooks, searchBooks , ChangeBookShelf }) => {
           <ol className="books-grid">
             {searchBooks && searchBooks.length > 0 ? (
               searchBooks.map((book, index) => (
-                <BookItem key={index} book={book} ChangeBookShelf={ChangeBookShelf}/>
+                <BookItem
+                  key={index}
+                  book={book}
+                  ChangeBookShelf={ChangeBookShelf}
+                />
               ))
             ) : (
-              <b className="no-results" style={{textTransform : 'uppercase'}}>on books</b>
+              //  { <b className="no-results" style={{ textTransform: "uppercase" }}>
+              //     on books
+              //   </b>}
+
+              <img
+                src="https://media3.giphy.com/media/9J7tdYltWyXIY/200.webp?cid=ecf05e472hcr7o940vyn7tgr85it89d2f2rzllpz9xdhuwoh&rid=200.webp&ct=g"
+                alt="on books"
+                style={{
+                  width: "100%",
+                  height: "600px",
+                }}
+              />
             )}
           </ol>
         </div>

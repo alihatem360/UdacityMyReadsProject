@@ -22,10 +22,19 @@ function App() {
   };
 
   const handelSearchBooks = async (query) => {
-    const books = await BooksAPI.search(query, 10);
-    console.log(books);
-    setSearchBooks(books);
+    let results = [];
+    await BooksAPI.search(query).then((res) => {
+      results = res.map((booksSearch) => {
+        books.forEach((book) => {
+          if (booksSearch.id === book.id) booksSearch.shelf = book.shelf;
+        });
+        return booksSearch;
+      });
+    });
+    console.log("Finalllll results ", results);
+    setSearchBooks(results);
   };
+
 
   return (
     <div className="app">

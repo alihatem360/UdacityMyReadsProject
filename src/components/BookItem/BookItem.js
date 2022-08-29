@@ -19,19 +19,17 @@ const BookItem = ({ book, shelfName, ChangeBookShelf }) => {
                 }}
               ></div>
               <div className="book-shelf-changer">
-                <select onChange={handledlChanged} value={shelfName}>
-                  <option value="none" disabled>
+                <select
+                  onChange={handledlChanged}
+                  defaultValue={book.shelf ? book.shelf : "none"}
+                >
+                  <option value="Move" disabled>
                     Move to...
                   </option>
-                  <option
-                    value="currentlyReading"
-                    selected={shelfName === book.shelf}
-                  >
-                    Currently Reading
-                  </option>
-                  <option value="wantToRead" selected={shelfName === book.shelf} >Want to Read</option>
-                  <option value="read" selected={shelfName === book.shelf}>Read</option>
-                  <option value="none" selected={shelfName === book.shelf}>None</option>
+                  <option value="currentlyReading">Currently Reading</option>
+                  <option value="wantToRead">Want to Read</option>
+                  <option value="read">Read</option>
+                  <option value="none">None</option>
                 </select>
               </div>
             </div>
